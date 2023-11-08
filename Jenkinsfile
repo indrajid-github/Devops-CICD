@@ -15,7 +15,7 @@ pipeline
         {
             steps
             {
-                sh 'checkout scmGit(branches: [[name: '*/master']], 
+                sh 'checkout scmGit(branches: [[name: '*/feature']], 
                 extensions: [], userRemoteConfigs: [[credentialsId: 'git-cred', url: 'https://github.com/indrajid-github/Devops-CICD.git']])'
             }
         }
