@@ -33,18 +33,14 @@ pipeline
         stage('Code Analysis')
         {
             steps
-            {
-                
-                
-                    withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar-token')]) 
-                    {
-                        sh "mvn clean verify sonar:sonar \
+            {   
+                    //withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar-token')]) 
+                    //{
+                        sh 'mvn clean verify sonar:sonar \
                             -Dsonar.projectKey=jenkins-intergration-key \
                             -Dsonar.host.url=http://13.236.177.156:9000 \
-                            -Dsonar.login=${sonar-token}"
-                    }
-                
-                
+                            -Dsonar.login=squ_5cd2b03357fb9c74a8b3e030b95489958863f84c'
+                    //}               
             }
         }
 
