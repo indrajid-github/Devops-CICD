@@ -34,16 +34,16 @@ pipeline
         {
             steps
             {
-                withSonarQubeEnv('sonar-9.9.2')
-                {
+                
+                
                     withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar-token')]) 
                     {
-                     sh "mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=Devops-CICD \
-                        -Dsonar.host.url=http://13.236.177.156:9000/ \
-                        -Dsonar.login=${sonar-token}"
+                        sh "mvn clean verify sonar:sonar \
+                            -Dsonar.projectKey=jenkins-intergration-key \
+                            -Dsonar.host.url=http://13.236.177.156:9000 \
+                            -Dsonar.login=${sonar-token}"
                     }
-                }
+                
                 
             }
         }
