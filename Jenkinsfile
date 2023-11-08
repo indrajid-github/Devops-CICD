@@ -30,6 +30,19 @@ pipeline
                 sh 'mvn clean compile'
             }
         }
+        stage('Code Analysis')
+        {
+            steps
+            {
+                withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar-token')]) 
+                {
+                     sh "mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=Devops-CICD \
+                        -Dsonar.host.url=http://13.236.177.156:9000/ \
+                        -Dsonar.login=${sonar-token}"
+                }
+            }
+        }
 
     }
 }
