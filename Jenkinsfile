@@ -44,7 +44,6 @@ pipeline
                             -Dsonar.host.url=http://13.236.177.156:9000 \
                             -Dsonar.login=${sonar-cred}"    
                 }   
-            }
         }
 
     }
