@@ -6,7 +6,7 @@ pipeline
         node
         {
             label 'maven'
-            customWorkspace '/home/indrajid/workspace/devops-cicd'
+            customWorkspace '/home/jenkins/workspace/devops-cicd'
         }
     }
     stages
@@ -15,8 +15,8 @@ pipeline
         {
             steps
             {
-                sh 'checkout scmGit(branches: [[name: '*/feature']], 
-                extensions: [], userRemoteConfigs: [[credentialsId: 'git-cred', url: 'https://github.com/indrajid-github/Devops-CICD.git']])'
+                checkout scmGit(branches: [[name: '*/feature']], 
+                extensions: [], userRemoteConfigs: [[credentialsId: 'git-cred', url: 'https://github.com/indrajid-github/Devops-CICD.git']])
             }
         }
     }
