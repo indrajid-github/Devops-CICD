@@ -36,10 +36,10 @@ pipeline
             {   
                     withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar-cred')]) 
                     {
-                        sh 'mvn sonar:sonar \
+                        sh "mvn sonar:sonar \
                             -Dsonar.projectKey=jenkins-intergration-key \
                             -Dsonar.host.url=http://13.236.177.156:9000 \
-                            -Dsonar.login=${sonar-cred}'
+                            -Dsonar.login=${sonar-cred}"
                     }
             }
         }
