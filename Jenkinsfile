@@ -75,7 +75,7 @@ pipeline
                 {
                     withCredentials([string(credentialsId: 'dockerHub-cred', variable: 'dockerHub-cred')]) 
                     {
-                        sh "docker login -u uriyapraba -p ${dockerHub-cred}"
+                        sh 'docker login -u uriyapraba -p $dockerHub-cred'
                         docker.image.push("uriyapraba/devopscicd:${build_num}")
                     }
                 }
