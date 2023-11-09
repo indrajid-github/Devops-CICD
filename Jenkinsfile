@@ -17,6 +17,10 @@ pipeline
     {
         string(name: 'branch', defaultValue: 'master', description: 'Enter branch name')
     }
+    environment
+    {
+        build_num = getBuildNumber()
+    }
     stages
     {
         stage('SCM checkout')
@@ -56,6 +60,18 @@ pipeline
                 sh 'mvn clean package'
             }
         }
+        stage('Docker Build')
+        {
+            steps
+            {
+                sh "docker build . -t uriyapraba/devopscicd:${build_num}"
+            }
+        }
 
     }
+}
+def getBuildNumber()
+{
+    def buildNumber = currentBuild.number
+    return buildNumber
 }
