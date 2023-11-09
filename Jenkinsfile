@@ -20,6 +20,7 @@ pipeline
     environment
     {
         build_num = getBuildNumber()
+        docker_cred = credentials('docker-cred')
     }
     stages
     {
@@ -71,16 +72,8 @@ pipeline
         {
             steps
             {
-                script
-                {
-                    withCredentials([string(credentialsId: 'dockerHub-cred', variable: 'dockerHub-cred')]) 
-                    {
-                        sh 'docker login -u uriyapraba -p $dockerHub-cred'
-                        docker.image.push("uriyapraba/devopscicd:${build_num}")
-                    }
-                }
-                
-            }
+                sh "docker login -u ${docker_cred_USR} -p ${docker_cred_PSW}"
+            }    
         }
     }
 }
