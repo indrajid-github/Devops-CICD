@@ -13,9 +13,9 @@ pipeline
     {
         maven 'mvn-3.9.5'
     }
-    environment
+    parameters
     {
-        sonar_cred = credentials('sonar-cred')
+        string(name: 'branch', defaultValue: 'master', description: 'Enter branch name')
     }
     stages
     {
@@ -23,7 +23,7 @@ pipeline
         {
             steps
             {
-                checkout scmGit(branches: [[name: '*/feature']], 
+                checkout scmGit(branches: [[name: "*/${params.branch}"]], 
                 extensions: [], userRemoteConfigs: [[credentialsId: 'git-cred', url: 'https://github.com/indrajid-github/Devops-CICD.git']])
             }
         }
@@ -38,12 +38,6 @@ pipeline
         {
             steps
             {    
-
-                            /*sh "mvn sonar:sonar \
-                            -Dsonar.projectKey=jenkins-intergration-key \
-                            -Dsonar.host.url=http://13.236.177.156:9000 \
-                            -Dsonar.login=${sonar_cred_PSW}" */
-
                             withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar_token')]) 
                             {
                                 sh 'mvn sonar:sonar \
