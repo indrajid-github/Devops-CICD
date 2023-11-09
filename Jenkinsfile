@@ -49,7 +49,7 @@ pipeline
                             }   
             }   
         }
-        stage('Code Compile')
+        stage('Code Build')
         {
             steps
             {
