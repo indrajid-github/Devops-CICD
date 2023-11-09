@@ -23,7 +23,7 @@ pipeline
         {
             steps
             {
-                checkout scmGit(branches: [[name: '*/${params.branch}']], 
+                checkout scmGit(branches: [[name: '*/$params.branch']], 
                 extensions: [], userRemoteConfigs: [[credentialsId: 'git-cred', url: 'https://github.com/indrajid-github/Devops-CICD.git']])
             }
         }
