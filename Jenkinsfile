@@ -43,11 +43,18 @@ pipeline
                             withCredentials([string(credentialsId: 'sonar-token', variable: 'sonar_token')]) 
                             {
                                 sh 'mvn sonar:sonar \
-                                    -Dsonar.projectKey=jenkins-intergration-key \
+                                    -Dsonar.projectKey=Devops-CICD \
                                     -Dsonar.host.url=http://3.25.181.53:9000 \
                                     -Dsonar.login=$sonar_token'
                             }   
-                }   
+            }   
+        }
+        stage('Code Compile')
+        {
+            steps
+            {
+                sh 'mvn clean package'
+            }
         }
 
     }
