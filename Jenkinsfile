@@ -73,6 +73,10 @@ pipeline
             steps
             {
                 sh "docker login -u ${docker_cred_USR} -p ${docker_cred_PSW}"
+                script
+                {
+                    docker.image.push("uriyapraba/devopscicd:${build_num}")
+                }
             }    
         }
     }
