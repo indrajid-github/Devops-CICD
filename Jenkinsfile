@@ -48,7 +48,7 @@ pipeline
                             {
                                 sh 'mvn sonar:sonar \
                                     -Dsonar.projectKey=jenkins-intergration-key \
-                                    -Dsonar.host.url=http://13.236.177.156:9000 \
+                                    -Dsonar.host.url=http://3.25.181.53:9000 \
                                     -Dsonar.login=$sonar_token'
                             }   
                 }   
