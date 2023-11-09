@@ -76,7 +76,8 @@ pipeline
                 script
                 {
                     sh "docker login -u ${docker_cred_USR} -p ${docker_cred_PSW}"
-                    docker.push("uriyapraba/devopscicd:${build_num}")
+                    //docker.push("uriyapraba/devopscicd:${build_num}")
+                    sh "docker push uriyapraba/devopscicd:${build_num}"
                 }
             }    
         }
