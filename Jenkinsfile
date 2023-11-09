@@ -67,7 +67,17 @@ pipeline
                 sh "docker build . -t uriyapraba/devopscicd:${build_num}"
             }
         }
-
+        stage('Docker Push')
+        {
+            steps
+            {
+                withCredentials([string(credentialsId: 'dockerHub-cred', variable: 'dockerHub-cred')]) 
+                {
+                    sh "docker login -u uriyapraba -p ${dockerHub-cred}"
+                    docker.image.push("uriyapraba/devopscicd:${build_num}")
+                }
+            }
+        }
     }
 }
 def getBuildNumber()
